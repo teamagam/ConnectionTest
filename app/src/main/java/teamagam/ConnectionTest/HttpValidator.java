@@ -1,17 +1,15 @@
 package teamagam.ConnectionTest;
 
-import android.os.AsyncTask;
-import android.widget.TextView;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class HttpValidator extends AsyncTask<String, Void, String> implements Vaildator {
+public class HttpValidator implements Validator {
 
-    private static final String STRING_TO_INSERT_IN_URL_STRING= "http://";
+    private static final String sSTRING_TO_INSERT_IN_URL_STRING = "http://";
+    private static final Integer sEXPECTED_RESPONSE_CODE = 200;
 
     private int mRespondCode;
     private URL mUrl;
@@ -21,40 +19,22 @@ public class HttpValidator extends AsyncTask<String, Void, String> implements Va
         mUrl = null;
     }
 
-    @Override
-    protected String doInBackground(String... params) {
-        if(Validate(params[0])) {
-            return "Yes";
-        }
-        return "No";
-    }
-
-    @Override
-    protected void onPostExecute(String message) {
-
-    }
-
-    public boolean Validate(String urlString) {
+    public boolean validate(String urlString) {
         try {
-                if(!urlString.contains("http://") || !urlString.contains("https://")) {
-                    mUrl = new URL(STRING_TO_INSERT_IN_URL_STRING + urlString);
-                }
-                else {
-                    mUrl = new URL(urlString);
-                }
+            if (!urlString.contains("http://") && !urlString.contains("https://")) {
+                mUrl = new URL(sSTRING_TO_INSERT_IN_URL_STRING + urlString);
+            } else {
+                mUrl = new URL(urlString);
+            }
 
-                HttpURLConnection connection = (HttpURLConnection) mUrl.openConnection();
-                mRespondCode = connection.getResponseCode();
-                if (mRespondCode == 200) {
+            HttpURLConnection connection = (HttpURLConnection) mUrl.openConnection();
+            mRespondCode = connection.getResponseCode();
+            if (mRespondCode == sEXPECTED_RESPONSE_CODE) {
                 return true;
             }
-        }
-
-        catch (MalformedURLException e) {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;

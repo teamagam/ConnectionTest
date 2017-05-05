@@ -5,4 +5,5 @@
     <string name="no_answer_result">failed</string>
     <string name="positive_result">succses</string>
     <string name="working">Working</string>
+    <string name="checking">Checking</string>
 </resources>

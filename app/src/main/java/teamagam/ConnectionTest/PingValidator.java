@@ -1,20 +1,17 @@
 package teamagam.ConnectionTest;
 
-import android.os.AsyncTask;
-
 import java.io.IOException;
 
-public class PingValidator extends AsyncTask<String, Void, String> implements Vaildator {
+public class PingValidator implements Validator {
+    private static final String[] sSTRINGS_TO_REMOVE_URL_STRING = {"http://", "https://"};
 
-    private static final String[] STRINGS_TO_REMOVE_URL_STRING= {"http://","https://"};
-
-    public boolean Validate(String urlString) {
+    public boolean validate(String urlString) {
         boolean reachable = false;
-        urlString = FixUrlString(urlString);
+        urlString = fixUrlString(urlString);
         try {
             Process p1 = Runtime.getRuntime().exec("ping -c 1 " + urlString);
             int returnVal = p1.waitFor();
-            reachable = (returnVal==0);
+            reachable = (returnVal == 0);
             return reachable;
         } catch (IOException e) {
             e.printStackTrace();
@@ -24,24 +21,10 @@ public class PingValidator extends AsyncTask<String, Void, String> implements Va
         return reachable;
     }
 
-    private String FixUrlString(String urlString) {
-        for (String strToRemove : STRINGS_TO_REMOVE_URL_STRING) {
-            urlString = urlString.replace(strToRemove,"");
+    private String fixUrlString(String urlString) {
+        for (String strToRemove : sSTRINGS_TO_REMOVE_URL_STRING) {
+            urlString = urlString.replace(strToRemove, "");
         }
         return urlString;
-    }
-
-    @Override
-    protected String doInBackground(String... params) {
-        if(Validate(params[0]))
-        {
-            return "Yes";
-        }
-        return "No";
-    }
-
-    @Override
-    protected void onPostExecute(String message) {
-
     }
 }
