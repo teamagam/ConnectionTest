@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="teamagam.ConnectionTest.connectionTestActivity"
+    tools:context="teamagam.ConnectionTest.test.connectionTestActivity"
     android:focusableInTouchMode="true">
 
     <Button

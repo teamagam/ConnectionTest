@@ -1,14 +1,11 @@
 package teamagam.ConnectionTest;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.concurrent.ExecutionException;
 
 public class connectionTestActivity extends AppCompatActivity {
 
@@ -32,8 +29,12 @@ public class connectionTestActivity extends AppCompatActivity {
 
         public DisplayResultToTextView(TextView resultTextView) {
             mResultTextView = resultTextView;
-            mResultTextView.setText(R.string.checking);
-            mResultTextView.setTextColor(ContextCompat.getColor(connectionTestActivity.this, R.color.blue));
+            displayLoading();
+    }
+
+    private void displayLoading(){
+        mResultTextView.setText(R.string.checking);
+        mResultTextView.setTextColor(ContextCompat.getColor(connectionTestActivity.this, R.color.blue));
     }
 
     @Override
