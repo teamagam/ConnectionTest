@@ -18,32 +18,34 @@ public class ConnectionTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection_test);
         setupUiElements();
-        testConnection();
+        testConnections();
     }
 
-    public class DisplayResultToTextView implements ValidatorAsyncTask.Displayer {
+    public class UIDisplayer implements ValidatorAsyncTask.Displayer {
         private TextView mResultTextView;
 
-        public DisplayResultToTextView(TextView resultTextView) {
+        public UIDisplayer(TextView resultTextView) {
             mResultTextView = resultTextView;
             displayLoading();
         }
 
         private void displayLoading() {
-            mResultTextView.setText(R.string.checking);
-            mResultTextView.setTextColor(ContextCompat.getColor(ConnectionTestActivity.this, R.color.blue));
+            displayStatus(R.string.checking, ContextCompat.getColor(ConnectionTestActivity.this, R.color.blue));
         }
 
         @Override
         public void displayOK() {
-            mResultTextView.setText(R.string.positive_result);
-            mResultTextView.setTextColor(ContextCompat.getColor(ConnectionTestActivity.this, R.color.green));
+            displayStatus(R.string.positive_result, ContextCompat.getColor(ConnectionTestActivity.this, R.color.green));
         }
 
         @Override
-        public void displayFaild() {
-            mResultTextView.setText(R.string.no_answer_result);
-            mResultTextView.setTextColor(ContextCompat.getColor(ConnectionTestActivity.this, R.color.red));
+        public void displayFailure() {
+            displayStatus(R.string.no_answer_result, ContextCompat.getColor(ConnectionTestActivity.this, R.color.red));
+        }
+
+        private void displayStatus(int text, int color) {
+            mResultTextView.setText(text);
+            mResultTextView.setTextColor(color);
         }
     }
 
@@ -53,27 +55,24 @@ public class ConnectionTestActivity extends AppCompatActivity {
         mPingResultTextView = (TextView) findViewById(R.id.ping_result_textView);
     }
 
-    public void testConnectionClicked(View view) {
-        testConnection();
+    public void onTestConnectionsClicked(View view) {
+        testConnections();
     }
 
-    private void testConnection() {
-        pingCheck();
-        httpCheck();
+    private void testConnections() {
+        String url = mIpEditText.getText().toString();
+        pingCheck(url);
+        httpCheck(url);
     }
 
-    private void httpCheck() {
-        Validator httpValidator = new HttpValidator();
-        ValidatorAsyncTask.Displayer httpDisplayer = new DisplayResultToTextView(mHttpResultTextView);
-        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(httpValidator, httpDisplayer);
-        httpTask.execute(mIpEditText.getText().toString());
+    private void httpCheck(String url) {
+        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(new HttpValidator(), new UIDisplayer(mHttpResultTextView));
+        httpTask.execute(url);
     }
 
-    private void pingCheck() {
-        Validator pingValidator = new PingValidator();
-        ValidatorAsyncTask.Displayer pingDisplayer = new DisplayResultToTextView(mPingResultTextView);
-        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(pingValidator, pingDisplayer);
-        pingTask.execute(mIpEditText.getText().toString());
+    private void pingCheck(String url) {
+        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(new PingValidator(), new UIDisplayer(mPingResultTextView));
+        pingTask.execute(url);
     }
 }
 

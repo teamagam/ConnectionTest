@@ -4,6 +4,6 @@
     <string name="default_address">172.217.18.14</string>
     <string name="no_answer_result">failed</string>
     <string name="positive_result">success</string>
-    <string name="working">Working</string>
-    <string name="checking">Checking</string>
+    <string name="working">working</string>
+    <string name="checking">checking</string>
 </resources>

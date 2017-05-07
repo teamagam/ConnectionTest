@@ -13,19 +13,19 @@ public class ValidatorAsyncTask extends AsyncTask<String, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String... params) {
-        if (mValidator.validate(params[0])) {
+    protected Boolean doInBackground(String... urls) {
+        if (mValidator.validate(urls[0])) {
             return true;
         }
         return false;
     }
 
     @Override
-    protected void onPostExecute(Boolean validatorResult) {
-        if (validatorResult) {
+    protected void onPostExecute(Boolean result) {
+        if (result) {
             mDisplayer.displayOK();
         } else {
-            mDisplayer.displayFaild();
+            mDisplayer.displayFailure();
         }
     }
 
@@ -33,8 +33,10 @@ public class ValidatorAsyncTask extends AsyncTask<String, Void, Boolean> {
     public interface Displayer {
         void displayOK();
 
-        void displayFaild();
+        void displayFailure();
     }
 
-
+    public interface Validator {
+        boolean validate(String url);
+    }
 }
