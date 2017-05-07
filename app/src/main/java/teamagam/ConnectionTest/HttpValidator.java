@@ -26,11 +26,10 @@ public class HttpValidator implements ValidatorAsyncTask.Validator {
     }
 
     private URL parseUrl(String url) throws MalformedURLException {
-        if (isUrlPrefixed(url)) {
+        if (!isUrlPrefixed(url)) {
             return new URL(URL_PREFIX + url);
-        } else {
-            return new URL(url);
         }
+            return new URL(url);
     }
 
     private boolean isUrlPrefixed(String urlString) {
