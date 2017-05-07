@@ -34,7 +34,7 @@ public class HttpValidator implements ValidatorAsyncTask.Validator {
     }
 
     private boolean isUrlPrefixed(String urlString) {
-        return !urlString.contains("http://") && !urlString.contains("https://");
+        return urlString.contains("http://") || urlString.contains("https://");
     }
 
 }

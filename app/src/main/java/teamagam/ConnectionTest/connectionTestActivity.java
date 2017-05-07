@@ -1,6 +1,7 @@
 package teamagam.ConnectionTest;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,16 +22,42 @@ public class ConnectionTestActivity extends AppCompatActivity {
         testConnections();
     }
 
+    private void setupUiElements() {
+        mIpEditText = (EditText) findViewById(R.id.address_editText);
+        mHttpResultTextView = (TextView) findViewById(R.id.http_result_textView);
+        mPingResultTextView = (TextView) findViewById(R.id.ping_result_textView);
+    }
+
+    public void onTestConnectionsClicked(View view) {
+        testConnections();
+    }
+
+    private void testConnections() {
+        String url = getUrl();
+        pingCheck(url);
+        httpCheck(url);
+    }
+
+    private String getUrl() {
+        return mIpEditText.getText().toString();
+    }
+
+    private void httpCheck(String url) {
+        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(new HttpValidator(), new UIDisplayer(mHttpResultTextView));
+        httpTask.execute(url);
+    }
+
+    private void pingCheck(String url) {
+        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(new PingValidator(), new UIDisplayer(mPingResultTextView));
+        pingTask.execute(url);
+    }
+
     public class UIDisplayer implements ValidatorAsyncTask.Displayer {
         private TextView mResultTextView;
 
         public UIDisplayer(TextView resultTextView) {
             mResultTextView = resultTextView;
             displayLoading();
-        }
-
-        private void displayLoading() {
-            displayStatus(R.string.checking, ContextCompat.getColor(ConnectionTestActivity.this, R.color.blue));
         }
 
         @Override
@@ -43,37 +70,13 @@ public class ConnectionTestActivity extends AppCompatActivity {
             displayStatus(R.string.no_answer_result, ContextCompat.getColor(ConnectionTestActivity.this, R.color.red));
         }
 
+        private void displayLoading() {
+            displayStatus(R.string.checking, ContextCompat.getColor(ConnectionTestActivity.this, R.color.blue));
+        }
+
         private void displayStatus(int text, int color) {
             mResultTextView.setText(text);
             mResultTextView.setTextColor(color);
         }
     }
-
-    private void setupUiElements() {
-        mIpEditText = (EditText) findViewById(R.id.address_editText);
-        mHttpResultTextView = (TextView) findViewById(R.id.http_result_textView);
-        mPingResultTextView = (TextView) findViewById(R.id.ping_result_textView);
-    }
-
-    public void onTestConnectionsClicked(View view) {
-        testConnections();
-    }
-
-    private void testConnections() {
-        String url = mIpEditText.getText().toString();
-        pingCheck(url);
-        httpCheck(url);
-    }
-
-    private void httpCheck(String url) {
-        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(new HttpValidator(), new UIDisplayer(mHttpResultTextView));
-        httpTask.execute(url);
-    }
-
-    private void pingCheck(String url) {
-        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(new PingValidator(), new UIDisplayer(mPingResultTextView));
-        pingTask.execute(url);
-    }
 }
-
-

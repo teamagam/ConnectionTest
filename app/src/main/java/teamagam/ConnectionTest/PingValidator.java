@@ -20,10 +20,10 @@ public class PingValidator implements ValidatorAsyncTask.Validator {
         return false;
     }
 
-    private String removePrefix(String urlString) {
+    private String removePrefix(String url) {
         for (String prefix : URL_PREFIXES) {
-            urlString = urlString.replace(prefix, "");
+            url = url.replace(prefix, "");
         }
-        return urlString;
+        return url;
     }
 }
