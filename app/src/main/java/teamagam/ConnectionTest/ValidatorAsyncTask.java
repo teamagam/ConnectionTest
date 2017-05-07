@@ -2,7 +2,7 @@ package teamagam.ConnectionTest;
 
 import android.os.AsyncTask;
 
-public class ValidatorAsyncTask extends AsyncTask<String, Void, String> {
+public class ValidatorAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     private Validator mValidator;
     private Displayer mDisplayer;
@@ -13,26 +13,24 @@ public class ValidatorAsyncTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... params) {
-        if(mValidator.validate(params[0])) {
-           return "Yes";
+    protected Boolean doInBackground(String... params) {
+        if (mValidator.validate(params[0])) {
+            return true;
         }
-        return "No";
+        return false;
     }
 
     @Override
-    protected void onPostExecute(String message) {
-        if(message.equals("Yes")) {
+    protected void onPostExecute(Boolean validatorResult) {
+        if (validatorResult) {
             mDisplayer.displayOK();
-        }
-        else {
+        } else {
             mDisplayer.displayFaild();
         }
     }
 
 
     public interface Displayer {
-
         void displayOK();
 
         void displayFaild();

@@ -10,16 +10,13 @@
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".connectionTestActivity">
+        <activity android:name=".ConnectionTestActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
                     android:windowSoftInputMode="stateHidden"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".address.Addresses_Table_Activity">
         </activity>
     </application>
 

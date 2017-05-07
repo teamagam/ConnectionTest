@@ -3,7 +3,7 @@
     <string name="ping_btn_text">Check Connections</string>
     <string name="default_address">172.217.18.14</string>
     <string name="no_answer_result">failed</string>
-    <string name="positive_result">succses</string>
+    <string name="positive_result">success</string>
     <string name="working">Working</string>
     <string name="checking">Checking</string>
 </resources>

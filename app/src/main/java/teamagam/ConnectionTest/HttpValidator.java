@@ -8,28 +8,16 @@ import java.net.URL;
 
 public class HttpValidator implements Validator {
 
-    private static final String sSTRING_TO_INSERT_IN_URL_STRING = "http://";
-    private static final Integer sEXPECTED_RESPONSE_CODE = 200;
+    private static final String URL_PREFIX = "http://";
+    private static final Integer HTTP_OK_RESPOND_CODE = 200;
 
-    private int mRespondCode;
-    private URL mUrl;
-
-    public HttpValidator() {
-        mRespondCode = 0;
-        mUrl = null;
-    }
-
-    public boolean validate(String urlString) {
+    @Override
+    public boolean validate(String url) {
         try {
-            if (!urlString.contains("http://") && !urlString.contains("https://")) {
-                mUrl = new URL(sSTRING_TO_INSERT_IN_URL_STRING + urlString);
-            } else {
-                mUrl = new URL(urlString);
-            }
-
-            HttpURLConnection connection = (HttpURLConnection) mUrl.openConnection();
-            mRespondCode = connection.getResponseCode();
-            if (mRespondCode == sEXPECTED_RESPONSE_CODE) {
+            HttpURLConnection connection = (HttpURLConnection) setupUrl(url).openConnection();
+            connection.connect();
+            int mRespondCode = connection.getResponseCode();
+            if (mRespondCode == HTTP_OK_RESPOND_CODE) {
                 return true;
             }
         } catch (MalformedURLException e) {
@@ -39,4 +27,17 @@ public class HttpValidator implements Validator {
         }
         return false;
     }
+
+    private URL setupUrl(String urlString) throws MalformedURLException {
+        if (doesUrlContainsPrefix(urlString)) {
+            return new URL(URL_PREFIX + urlString);
+        } else {
+            return new URL(urlString);
+        }
+    }
+
+    private boolean doesUrlContainsPrefix(String urlString) {
+        return !urlString.contains("http://") && !urlString.contains("https://");
+    }
+
 }

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class connectionTestActivity extends AppCompatActivity {
+public class ConnectionTestActivity extends AppCompatActivity {
 
     private EditText mIpEditText;
     private TextView mHttpResultTextView;
@@ -17,46 +17,47 @@ public class connectionTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection_test);
-
         setupUiElements();
-        refreshStatus(null);
-
+        testConnection();
     }
 
     public class DisplayResultToTextView implements ValidatorAsyncTask.Displayer {
-
         private TextView mResultTextView;
 
         public DisplayResultToTextView(TextView resultTextView) {
             mResultTextView = resultTextView;
             displayLoading();
-    }
+        }
 
-    private void displayLoading(){
-        mResultTextView.setText(R.string.checking);
-        mResultTextView.setTextColor(ContextCompat.getColor(connectionTestActivity.this, R.color.blue));
-    }
+        private void displayLoading() {
+            mResultTextView.setText(R.string.checking);
+            mResultTextView.setTextColor(ContextCompat.getColor(ConnectionTestActivity.this, R.color.blue));
+        }
 
-    @Override
-    public void displayOK() {
-        mResultTextView.setText(R.string.positive_result);
-        mResultTextView.setTextColor(ContextCompat.getColor(connectionTestActivity.this, R.color.green));
-    }
+        @Override
+        public void displayOK() {
+            mResultTextView.setText(R.string.positive_result);
+            mResultTextView.setTextColor(ContextCompat.getColor(ConnectionTestActivity.this, R.color.green));
+        }
 
-    @Override
-    public void displayFaild() {
-        mResultTextView.setText(R.string.no_answer_result);
-        mResultTextView.setTextColor(ContextCompat.getColor(connectionTestActivity.this, R.color.red));
-    }
+        @Override
+        public void displayFaild() {
+            mResultTextView.setText(R.string.no_answer_result);
+            mResultTextView.setTextColor(ContextCompat.getColor(ConnectionTestActivity.this, R.color.red));
+        }
     }
 
     private void setupUiElements() {
-        mIpEditText = (EditText) findViewById(R.id.ip_editText);
+        mIpEditText = (EditText) findViewById(R.id.address_editText);
         mHttpResultTextView = (TextView) findViewById(R.id.http_result_textView);
         mPingResultTextView = (TextView) findViewById(R.id.ping_result_textView);
     }
 
-    public void refreshStatus(View view) {
+    public void testConnectionClicked(View view) {
+        testConnection();
+    }
+
+    private void testConnection() {
         pingCheck();
         httpCheck();
     }
