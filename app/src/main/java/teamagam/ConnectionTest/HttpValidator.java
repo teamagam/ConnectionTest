@@ -11,7 +11,7 @@ public class HttpValidator implements ValidatorAsyncTask.Validator {
     private static final String[] URL_PREFIXES = {"http://", "https://"};
 
     @Override
-    public boolean validate(String url) {
+    public synchronized boolean validate(String url) {
         try {
             HttpURLConnection connection = (HttpURLConnection) parseUrl(url).openConnection();
             connection.connect();
