@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Connection Test</string>
+
     <string name="ping_btn_text">test connections</string>
+
     <string name="default_address">172.217.18.14</string>
-    <string name="negative_result">Failure</string>
-    <string name="positive_result">Success</string>
-    <string name="checking">Checking</string>
+
     <string name="label_ping">Ping:</string>
     <string name="label_http">Http:</string>
+
+    <string name="checking">Checking</string>
+    <string name="negative_result">Failure</string>
+    <string name="positive_result">Success</string>
+
+    <string name="simple_test_target">google.com</string>
+    <string name="proxy_test_target">cnn.com</string>
+    <string name="server_test_target">ynet.co.il</string>
 </resources>

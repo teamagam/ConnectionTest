@@ -29,8 +29,8 @@ public class ConnectionTestActivity extends AppCompatActivity {
     }
 
     private void setTargets() {
-        mSimpleTestFragment.setTarget("google.com");
-        mProxyTestFragment.setTarget("cnn.com");
-        mServerTestFragment.setTarget("ynet.co.il");
+        mSimpleTestFragment.setTarget(getString(R.string.simple_test_target));
+        mProxyTestFragment.setTarget(getString(R.string.proxy_test_target));
+        mServerTestFragment.setTarget(getString(R.string.server_test_target));
     }
 }
