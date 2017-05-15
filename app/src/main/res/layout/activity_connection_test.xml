@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context="teamagam.ConnectionTest.ConnectionTestActivity">
+    tools:context="teamagam.ConnectionTest.TempConnectionTestActivity">
 
     <EditText
         android:id="@+id/address_editText"
