@@ -22,12 +22,12 @@ public class ConnectionTestFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_connection_test, container);
         setupUiElements(view);
-        testConnections();
         return view;
     }
 
-    public void setTarget(String target) {
+    public void setNewTarget(String target) {
         mTestTarget.setText(target);
+        testConnections();
     }
 
     private void setupUiElements(View view) {
