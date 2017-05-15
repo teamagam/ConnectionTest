@@ -18,7 +18,8 @@ public class ConnectionTestFragment extends Fragment {
     private TextView mPingResultTextView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(
+            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_connection_test, container);
         setupUiElements(view);
         testConnections();
@@ -49,12 +50,16 @@ public class ConnectionTestFragment extends Fragment {
     }
 
     private void httpCheck(String url) {
-        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(new HttpValidator(), new UIDisplayer(mHttpResultTextView));
+        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(
+                new HttpValidator(),
+                new UIDisplayer(mHttpResultTextView));
         httpTask.execute(url);
     }
 
     private void pingCheck(String url) {
-        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(new PingValidator(), new UIDisplayer(mPingResultTextView));
+        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(
+                new PingValidator(),
+                new UIDisplayer(mPingResultTextView));
         pingTask.execute(url);
     }
 
@@ -63,7 +68,7 @@ public class ConnectionTestFragment extends Fragment {
 
         UIDisplayer(TextView resultTextView) {
             mResultTextView = resultTextView;
-            displayLoading();
+            displayChecking();
         }
 
         @Override
@@ -74,17 +79,17 @@ public class ConnectionTestFragment extends Fragment {
 
         @Override
         public void displayFailure() {
-            displayStatus(R.string.no_answer_result,
+            displayStatus(R.string.negative_result,
                     ContextCompat.getColor(getContext(), R.color.red));
         }
 
-        private void displayLoading() {
+        private void displayChecking() {
             displayStatus(R.string.checking,
                     ContextCompat.getColor(getContext(), R.color.blue));
         }
 
-        private void displayStatus(int text, int color) {
-            mResultTextView.setText(text);
+        private void displayStatus(int textResId, int color) {
+            mResultTextView.setText(textResId);
             mResultTextView.setTextColor(color);
         }
     }

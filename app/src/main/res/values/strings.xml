@@ -2,9 +2,8 @@
     <string name="app_name">Connection Test</string>
     <string name="ping_btn_text">test connections</string>
     <string name="default_address">172.217.18.14</string>
-    <string name="no_answer_result">Failure</string>
+    <string name="negative_result">Failure</string>
     <string name="positive_result">Success</string>
-    <string name="working">working</string>
     <string name="checking">Checking</string>
     <string name="label_ping">Ping:</string>
     <string name="label_http">Http:</string>
