@@ -16,10 +16,9 @@
         />
 
     <Button
-        android:id="@+id/connection_test_btn"
+        android:id="@+id/test_connections_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onTestConnectionsClicked"
         android:text="@string/ping_btn_text"
         />
 
