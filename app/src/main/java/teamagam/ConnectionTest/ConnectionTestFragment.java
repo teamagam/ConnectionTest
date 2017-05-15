@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class ConnectionTestFragment extends Fragment {
 
-    private EditText mIpEditText;
+    private EditText mTestTarget;
     private TextView mHttpResultTextView;
     private TextView mPingResultTextView;
 
@@ -26,8 +26,12 @@ public class ConnectionTestFragment extends Fragment {
         return view;
     }
 
+    public void setTarget(String target) {
+        mTestTarget.setText(target);
+    }
+
     private void setupUiElements(View view) {
-        mIpEditText = (EditText) view.findViewById(R.id.address_editText);
+        mTestTarget = (EditText) view.findViewById(R.id.target_editText);
         mHttpResultTextView = (TextView) view.findViewById(R.id.http_result_textView);
         mPingResultTextView = (TextView) view.findViewById(R.id.ping_result_textView);
         Button testConnectionsButton = (Button) view.findViewById(R.id.test_connections_btn);
@@ -46,7 +50,7 @@ public class ConnectionTestFragment extends Fragment {
     }
 
     private String getUrl() {
-        return mIpEditText.getText().toString();
+        return mTestTarget.getText().toString();
     }
 
     private void httpCheck(String url) {

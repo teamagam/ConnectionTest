@@ -9,7 +9,7 @@
     tools:context="teamagam.ConnectionTest.ConnectionTestActivity">
 
     <EditText
-        android:id="@+id/address_editText"
+        android:id="@+id/target_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_address"
