@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class TempConnectionTestActivity extends AppCompatActivity {
+public class ConnectionTestActivity extends AppCompatActivity {
 
     private EditText mIpEditText;
     private TextView mHttpResultTextView;
@@ -61,16 +61,16 @@ public class TempConnectionTestActivity extends AppCompatActivity {
 
         @Override
         public void displayOK() {
-            displayStatus(R.string.positive_result, ContextCompat.getColor(TempConnectionTestActivity.this, R.color.green));
+            displayStatus(R.string.positive_result, ContextCompat.getColor(ConnectionTestActivity.this, R.color.green));
         }
 
         @Override
         public void displayFailure() {
-            displayStatus(R.string.no_answer_result, ContextCompat.getColor(TempConnectionTestActivity.this, R.color.red));
+            displayStatus(R.string.no_answer_result, ContextCompat.getColor(ConnectionTestActivity.this, R.color.red));
         }
 
         private void displayLoading() {
-            displayStatus(R.string.checking, ContextCompat.getColor(TempConnectionTestActivity.this, R.color.blue));
+            displayStatus(R.string.checking, ContextCompat.getColor(ConnectionTestActivity.this, R.color.blue));
         }
 
         private void displayStatus(int text, int color) {

@@ -10,7 +10,7 @@
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".TempConnectionTestActivity">
+        <activity android:name=".ConnectionTestActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
