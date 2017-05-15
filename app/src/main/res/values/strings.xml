@@ -15,4 +15,9 @@
     <string name="simple_test_target">google.com</string>
     <string name="proxy_test_target">cnn.com</string>
     <string name="server_test_target">ynet.co.il</string>
+
+    <string name="simple_test_target_ip">172.217.18.14</string>
+    <string name="proxy_test_target_ip">151.101.65.67</string>
+    <string name="server_test_target_ip">23.63.89.103</string>
+
 </resources>
