@@ -12,41 +12,78 @@
         android:id="@+id/target_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/default_address"
+        android:textSize="@dimen/font_size_normal"
         />
 
     <Button
         android:id="@+id/test_connections_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/ping_btn_text"
+        android:textSize="@dimen/font_size_small"
         />
 
-    <TextView
-        android:id="@+id/ping_label_textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/label_ping"
-        />
+        android:orientation="horizontal"
+        >
 
-    <TextView
-        android:id="@+id/ping_result_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
 
-    <TextView
-        android:id="@+id/http_label_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_http"
-        />
+            <TextView
+                android:id="@+id/ping_label_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_ping"
+                android:textSize="@dimen/font_size_normal"
+                />
 
+            <TextView
+                android:id="@+id/ping_result_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_normal"
+                tools:text="@string/positive_result"
+                tools:textColor="@color/green"
+                />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/http_result_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
 
+            <TextView
+                android:id="@+id/http_label_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_http"
+                android:textSize="@dimen/font_size_normal"
+                />
+
+            <TextView
+                android:id="@+id/http_result_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_normal"
+                tools:text="@string/negative_result"
+                tools:textColor="@color/red"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
