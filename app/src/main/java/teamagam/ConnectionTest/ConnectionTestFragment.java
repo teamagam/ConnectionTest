@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 public class ConnectionTestFragment extends Fragment {
 
+    private TextView mTitle;
     private EditText mTestTarget;
     private TextView mHttpResultTextView;
     private TextView mPingResultTextView;
@@ -25,13 +26,18 @@ public class ConnectionTestFragment extends Fragment {
         return view;
     }
 
+    public void setTitle(String title) {
+        mTitle.setText(title);
+    }
+
     public void setNewTarget(String target) {
         mTestTarget.setText(target);
         testConnections();
     }
 
     private void setupUiElements(View view) {
-        mTestTarget = (EditText) view.findViewById(R.id.target_editText);
+        mTitle = (TextView) view.findViewById(R.id.fragment_title);
+        mTestTarget = (EditText) view.findViewById(R.id.target_edittext);
         mHttpResultTextView = (TextView) view.findViewById(R.id.http_result_textView);
         mPingResultTextView = (TextView) view.findViewById(R.id.ping_result_textView);
         Button testConnectionsButton = (Button) view.findViewById(R.id.test_connections_btn);

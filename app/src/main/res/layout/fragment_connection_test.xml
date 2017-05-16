@@ -3,13 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fragment_background"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context="teamagam.ConnectionTest.ConnectionTestActivity">
+    android:padding="@dimen/padding_normal"
+    tools:context="teamagam.ConnectionTest.ConnectionTestActivity"
+    >
+
+    <TextView
+        android:id="@+id/fragment_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_normal"
+        tools:text="@string/simple_test_title"
+        />
 
     <EditText
-        android:id="@+id/target_editText"
+        android:id="@+id/target_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -29,8 +40,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:baselineAligned="false"
+        android:orientation="horizontal"
         >
 
         <LinearLayout

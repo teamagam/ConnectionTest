@@ -20,7 +20,8 @@
         android:layout_width="@dimen/body_fragment_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_normal"/>
+        android:layout_marginTop="@dimen/margin_big"
+        />
 
     <fragment
         android:id="@+id/proxy_test_fragment"
@@ -28,14 +29,7 @@
         android:layout_width="@dimen/body_fragment_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_normal"/>
-
-    <fragment
-        android:id="@+id/server_test_fragment"
-        android:name="teamagam.ConnectionTest.ConnectionTestFragment"
-        android:layout_width="@dimen/body_fragment_width"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_normal"/>
+        android:layout_marginTop="@dimen/margin_big"
+        />
 
 </LinearLayout>
