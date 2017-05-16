@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="font_size_small">24sp</dimen>
-    <dimen name="font_size_normal">32sp</dimen>
-    <dimen name="font_size_big">40sp</dimen>
+    <dimen name="font_size_small">20sp</dimen>
+    <dimen name="font_size_normal">28sp</dimen>
+    <dimen name="font_size_big">36sp</dimen>
 
     <dimen name="margin_normal">10dp</dimen>
     <dimen name="margin_big">30dp</dimen>
 
     <dimen name="padding_normal">10dp</dimen>
 
-    <dimen name="body_fragment_width">400dp</dimen>
+    <dimen name="body_fragment_width">350dp</dimen>
 </resources>

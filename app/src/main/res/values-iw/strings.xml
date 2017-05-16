@@ -11,6 +11,7 @@
     <string name="negative_result">נכשל</string>
     <string name="positive_result">עבר</string>
 
-    <string name="simple_test_title">סטטוס רשת:</string>
+    <string name="network_test_title">סטטוס רשת:</string>
     <string name="proxy_test_title">סטטוס פרוקסי:</string>
+    <string name="encoder_test_title">סטטוס מצפין:</string>
 </resources>

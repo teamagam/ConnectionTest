@@ -3,7 +3,7 @@
 
     <string name="ping_btn_text">test connections</string>
 
-    <string name="default_address">172.217.18.14</string>
+    <string name="default_address" translatable="false">172.217.18.14</string>
 
     <string name="label_ping">Ping:</string>
     <string name="label_http">Http:</string>
@@ -12,15 +12,16 @@
     <string name="negative_result">Failure</string>
     <string name="positive_result">Success</string>
 
-    <string name="simple_test_title">Network Status:</string>
+    <string name="encoder_test_title">Encoder Status:</string>
+    <string name="network_test_title">Network Status:</string>
     <string name="proxy_test_title">Proxy Status:</string>
 
-    <string name="simple_test_target">google.com</string>
-    <string name="proxy_test_target">cnn.com</string>
-    <string name="server_test_target">ynet.co.il</string>
+    <string name="encoder_test_target" translatable="false">ynet.co.il</string>
+    <string name="network_test_target" translatable="false">google.com</string>
+    <string name="proxy_test_target" translatable="false">cnn.com</string>
 
-    <string name="simple_test_target_ip">172.217.18.14</string>
-    <string name="proxy_test_target_ip">151.101.65.67</string>
-    <string name="server_test_target_ip">23.63.89.103</string>
+    <string name="encoder_test_target_ip" translatable="false">23.63.89.103</string>
+    <string name="simple_test_target_ip" translatable="false">172.217.18.14</string>
+    <string name="proxy_test_target_ip" translatable="false">151.101.65.67</string>
 
 </resources>

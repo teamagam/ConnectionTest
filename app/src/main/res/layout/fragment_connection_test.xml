@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_size_normal"
-        tools:text="@string/simple_test_title"
+        tools:text="@string/network_test_title"
         />
 
     <EditText

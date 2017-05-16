@@ -6,29 +6,42 @@ import android.support.v7.app.AppCompatActivity;
 
 public class ConnectionTestActivity extends AppCompatActivity {
 
-    private ConnectionTestFragment mSimpleTestFragment;
+    private ConnectionTestFragment mEncoderTestFragment;
+    private ConnectionTestFragment mNetworkTestFragment;
     private ConnectionTestFragment mProxyTestFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupTestEnvironment();
+    }
+
+    private void setupTestEnvironment() {
         setFragments();
+        setTitles();
         setTargets();
     }
 
     private void setFragments() {
         FragmentManager manager = getSupportFragmentManager();
-        mSimpleTestFragment = (ConnectionTestFragment) manager.
-                findFragmentById(R.id.simple_test_fragment);
+        mEncoderTestFragment = (ConnectionTestFragment) manager.
+                findFragmentById(R.id.encoder_test_fragment);
+        mNetworkTestFragment = (ConnectionTestFragment) manager.
+                findFragmentById(R.id.network_test_fragment);
         mProxyTestFragment = (ConnectionTestFragment) manager.
                 findFragmentById(R.id.proxy_test_fragment);
     }
 
-    private void setTargets() {
-        mSimpleTestFragment.setTitle(getString(R.string.simple_test_title));
-        mSimpleTestFragment.setNewTarget(getString(R.string.simple_test_target));
+    private void setTitles() {
+        mEncoderTestFragment.setTitle(getString(R.string.encoder_test_title));
+        mNetworkTestFragment.setTitle(getString(R.string.network_test_title));
         mProxyTestFragment.setTitle(getString(R.string.proxy_test_title));
+    }
+
+    private void setTargets() {
+        mEncoderTestFragment.setNewTarget(getString(R.string.encoder_test_target));
+        mNetworkTestFragment.setNewTarget(getString(R.string.network_test_target));
         mProxyTestFragment.setNewTarget(getString(R.string.proxy_test_target));
     }
 }
