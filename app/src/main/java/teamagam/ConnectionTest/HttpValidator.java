@@ -8,10 +8,10 @@ import java.net.URL;
 
 public class HttpValidator implements ValidatorAsyncTask.Validator {
 
-    private static final String URL_PREFIX = "http://";
+    private static final String[] URL_PREFIXES = {"http://", "https://"};
 
     @Override
-    public boolean validate(String url) {
+    public synchronized boolean validate(String url) {
         try {
             HttpURLConnection connection = (HttpURLConnection) parseUrl(url).openConnection();
             connection.connect();
@@ -26,14 +26,19 @@ public class HttpValidator implements ValidatorAsyncTask.Validator {
     }
 
     private URL parseUrl(String url) throws MalformedURLException {
-        if (!isUrlPrefixed(url)) {
-            return new URL(URL_PREFIX + url);
-        }
+        if (isUrlPrefixed(url)) {
             return new URL(url);
+        }
+        return new URL(URL_PREFIXES[0] + url);
     }
 
-    private boolean isUrlPrefixed(String urlString) {
-        return urlString.contains("http://") || urlString.contains("https://");
+    private boolean isUrlPrefixed(String url) {
+        for (String prefix : URL_PREFIXES) {
+            if (url.contains(prefix)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

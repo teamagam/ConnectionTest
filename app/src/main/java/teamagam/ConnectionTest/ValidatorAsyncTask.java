@@ -14,15 +14,12 @@ public class ValidatorAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(String... urls) {
-        if (mValidator.validate(urls[0])) {
-            return true;
-        }
-        return false;
+        return mValidator.validate(urls[0]);
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
-        if (result) {
+    protected void onPostExecute(Boolean valid) {
+        if (valid) {
             mDisplayer.displayOK();
         } else {
             mDisplayer.displayFailure();
