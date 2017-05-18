@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">בדיקת תקשורת</string>
+
+    <string name="ping_btn_text">בדוק תקשורת</string>
+
+    <string name="label_ping">פינג:</string>
+    <string name="label_http">בדיקת HTTP:</string>
+
+    <string name="checking">בודק</string>
+    <string name="negative_result">נכשל</string>
+    <string name="positive_result">עבר</string>
+
+    <string name="network_test_title">סטטוס רשת:</string>
+    <string name="proxy_test_title">סטטוס פרוקסי:</string>
+    <string name="encoder_test_title">סטטוס מצפין:</string>
+</resources>

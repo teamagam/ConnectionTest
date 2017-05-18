@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fragment_background"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_normal"
+    tools:context="teamagam.ConnectionTest.ConnectionTestActivity"
+    >
+
+    <TextView
+        android:id="@+id/fragment_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_normal"
+        tools:text="@string/network_test_title"
+        />
+
+    <EditText
+        android:id="@+id/target_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/font_size_normal"
+        tools:text="@string/default_address"
+        />
+
+    <Button
+        android:id="@+id/test_connections_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/ping_btn_text"
+        android:textSize="@dimen/font_size_small"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/ping_label_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_ping"
+                android:textSize="@dimen/font_size_normal"
+                />
+
+            <TextView
+                android:id="@+id/ping_result_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_normal"
+                tools:text="@string/positive_result"
+                tools:textColor="@color/green"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/http_label_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_http"
+                android:textSize="@dimen/font_size_normal"
+                />
+
+            <TextView
+                android:id="@+id/http_result_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_normal"
+                tools:text="@string/negative_result"
+                tools:textColor="@color/red"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
