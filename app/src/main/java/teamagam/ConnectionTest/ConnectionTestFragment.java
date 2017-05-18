@@ -1,5 +1,6 @@
 package teamagam.ConnectionTest;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -60,17 +61,18 @@ public class ConnectionTestFragment extends Fragment {
     }
 
     private void httpCheck(String url) {
-        ValidatorAsyncTask httpTask = new ValidatorAsyncTask(
-                new HttpValidator(),
-                new UIDisplayer(mHttpResultTextView));
-        httpTask.execute(url);
+        executeValidatorTask(url, new HttpValidator(), mHttpResultTextView);
     }
 
     private void pingCheck(String url) {
-        ValidatorAsyncTask pingTask = new ValidatorAsyncTask(
-                new PingValidator(),
-                new UIDisplayer(mPingResultTextView));
-        pingTask.execute(url);
+        executeValidatorTask(url, new PingValidator(), mPingResultTextView);
+    }
+
+    private void executeValidatorTask(
+            String url, ValidatorAsyncTask.Validator validator, TextView resultTextView) {
+        ValidatorAsyncTask task = new ValidatorAsyncTask(
+                validator, new UIDisplayer(resultTextView));
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
     private class UIDisplayer implements ValidatorAsyncTask.Displayer {
